@@ -6,32 +6,24 @@ using namespace std;
 class Solution {
 public:
    int removeDuplicates(vector<int> &nums) {
-      int last;
-      for (int i = 0; i < nums.size(); i++) {
-         if(nums[i] == nums[i + 1] && nums[i] != last) {
-            if(nums[i] == nums[i+1]) {
-               last = nums[i];
-               if(last == nums[i+1]) {
-               last = nums[i];
-               }else {
-                  nums.erase(nums.begin() + i);
-               }
-            } else {
-               nums.erase(nums.begin() + i);
-            }
-         } else {
-            nums.erase(nums.begin() + i);
-         }
-      } 
-
-      return nums.size();
+      int cont = 0;
+      int i = 1;
+      while (i <= nums.size()) {
+         if(nums[cont] != nums[i]) {
+            cont++;
+            nums[cont] = nums[i];
+         } 
+         i++;
+      }
+      
+      return cont;
    }
 };
 
 int main() {
    Solution solution;
    int k;
-   vector<int> nums = {0, 0, 1, 1, 1, 2, 2, 3, 3, 4};
+   vector<int> nums = {1, 1, 2};
    vector<int> expectedNums = {0, 1, 2, 3, 4};
 
    k = solution.removeDuplicates(nums);
