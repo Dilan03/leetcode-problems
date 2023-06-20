@@ -7,13 +7,12 @@ class Solution {
 public:
    int removeDuplicates(vector<int> &nums) {
       int cont = 0;
-      int i = 1;
-      while (i <= nums.size()) {
+
+      for (int i = 1; i <= nums.size(); i++) {
          if(nums[cont] != nums[i]) {
             cont++;
             nums[cont] = nums[i];
          } 
-         i++;
       }
       
       return cont;
