@@ -5,20 +5,17 @@ using namespace std;
 
 class Solution {
 public:
-   string removeDuplicates(string s) {
-      int i = 0, j = 1;
+  string removeDuplicates(string s) {
+      int i = 0;
 
-      while(j < s.size()) {
-         if(s[i] != s[j]) {
+      while(i < s.size()) {
+         if(s[i] != s[i+1]) 
             i++;
-            j++;
-         } else {
-            s.erase(s.begin() + j);
+         else {
             s.erase(s.begin() + i);
-            if(i > 0) {
-               i--; j--;
-            }
-            
+            s.erase(s.begin() + i);
+            if(i > 0) 
+               i--; 
          }
       }
 
@@ -29,9 +26,10 @@ public:
 int main() {
    Solution solution;
 
-   string s = "azxxzy";
+   string s = "abbaca";
 
    string newS = solution.removeDuplicates(s);
+   
 
    cout << newS;
 }
